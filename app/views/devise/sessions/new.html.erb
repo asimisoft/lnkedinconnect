@@ -1,0 +1,11 @@
+<h2>Log in</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <% if resource.is_a?(User) %>
+    <%= render :partial => "devise/sessions/userr_sign_in", locals: {:f => f} %>
+  <% elsif resource.is_a?(Admin) %>
+    <%= render :partial => "devise/sessions/admin_sign_in", locals: {:f => f} %>
+  <% end %>
+<% end %>
+
+<%= render "devise/shared/links" %>

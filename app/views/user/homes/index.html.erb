@@ -1,0 +1,47 @@
+<h2>Welcome to user home page</h2>
+
+<br/>
+
+<%= current_user.email %>
+
+<br/><br/>
+<div class="body-content">
+<div class="profile-header">My Profile</div>
+  <% profile = current_user.profile %>
+  <p><span>First Name:</span> <%= profile.first_name %></p>
+  <p><span>Last Name:</span> <%= profile.last_name %></p>
+  <p><span>Location:</span> <%= profile.location %></p>
+  <p><span>Country:</span> <%= profile.country %></p>
+  <p><span>Filepicker Url:</span> <%= image_tag profile.filepicker_url %></p>
+  <p><span>Summary:</span> <%= profile.summary %></p>
+</div>
+
+<div class="body-content">
+<div class="profile-header">Education</div>
+  <% education = current_user.profile.educations.first %>
+  <p><span>College:</span><%= education.college %></p>
+  <p><span>Degree:</span><%= education.degree %></p>
+  <p><span>Field:</span><%= education.field %></p>
+  <p><span>Graduation Year:</span><%= education.graduation_year %></p>
+</div>
+
+<div class="body-content">
+<div class="profile-header">Employments</div>
+  <% employment = current_user.profile.employments.first %>
+  <p><span>Company:</span><%= employment.company %></p>
+  <p><span>Position:</span><%= employment.position %></p>
+  <p><span>Start Date:</span><%= employment.start_date %></p>
+  <p><span>Description:</span><%= employment.description %></p>
+</div>
+
+<style>
+  .profile-header {
+    color: blue;
+    font-size: 18px;
+    text-decoration: underline;
+  }
+
+  .body-content {
+    background-color: #CCC;
+  }
+</style>
