@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_one :profile
 
   # include Authority::UserAbilities
+ 
 
   def is_admin?
     self.role == "admin"
@@ -41,7 +42,13 @@ class User < ActiveRecord::Base
           p "....................................."
            p user.first_name
           p "....................................."
-          user.email = auth.info.email
+
+          if auth.info.email.present?
+            user.email = auth.info.email
+          else
+            user.email = "#{self.name}_email@example.com"
+          end
+          
           p "....................................."
            p user.email
           p "....................................."

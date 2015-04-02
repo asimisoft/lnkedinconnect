@@ -36,7 +36,7 @@ gem 'omniauth'
 gem 'omniauth-linkedin'
 gem 'linkedin'
 gem 'dotenv-rails'
-# gem 'omniauth-twitter'
+gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 
 #is used for like

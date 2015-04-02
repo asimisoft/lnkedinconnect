@@ -15,4 +15,8 @@ class Authorization < ActiveRecord::Base
 
      end
 
+     def fetch_details_from_twitter
+
+     end
+
 end

@@ -264,4 +264,16 @@ Devise.setup do |config|
 
   require 'omniauth-facebook'
   config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET']
+
+  # require 'omniauth-twitter'
+  config.omniauth :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET']
+  # ,
+  # {
+  #       :secure_image_url => 'true',
+  #       :image_size => 'original',
+  #       :authorize_params => {
+  #         :force_login => 'true',
+  #         :lang => 'en'
+  #       }
+  # }
 end
