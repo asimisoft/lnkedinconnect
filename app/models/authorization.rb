@@ -11,4 +11,8 @@ class Authorization < ActiveRecord::Base
 
     end
 
+     def fetch_details_from_facebook
+
+     end
+
 end

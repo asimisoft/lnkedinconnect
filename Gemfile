@@ -37,7 +37,7 @@ gem 'omniauth-linkedin'
 gem 'linkedin'
 gem 'dotenv-rails'
 # gem 'omniauth-twitter'
-# gem 'omniauth-facebook'
+gem 'omniauth-facebook'
 
 #is used for like
 gem 'social-share-button', '~> 0.1.6'

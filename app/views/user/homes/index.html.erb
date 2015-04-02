@@ -2,9 +2,12 @@
 
 <br/>
 
-<%= current_user.email %>
+Email: <%= current_user.email %>
+
+Provider: <%= current_user.authorizations.first.provider %>
 
 <br/><br/>
+<% if current_user.authorizations.first.provider == "linkedin" %>
 <div class="body-content">
 <div class="profile-header">My Profile</div>
   <% profile = current_user.profile %>
@@ -33,6 +36,7 @@
   <p><span>Start Date:</span><%= employment.start_date %></p>
   <p><span>Description:</span><%= employment.description %></p>
 </div>
+<% end %>
 
 <style>
   .profile-header {

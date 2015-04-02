@@ -15,11 +15,20 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth, current_user)
       p "***************"
-      p auth
+      p auth + "~~~~~~~~~~~~~!!!!!!!!!!!!!!!!!~~~~~~~~~~~!!!!!!!!!!"
+      p "-------------------------------"
+
+      p "***************"
+      p auth.provider
       p "-------------------------------"
       p current_user
       p "******************"
-      authorization = Authorization.where(:provider => auth.provider, :uid => auth.uid.to_s, :token => auth.credentials.token, :secret => auth.credentials.secret).first_or_initialize
+      # if auth.provider == "linkedin"
+      #   authorization = Authorization.where(:provider => auth.provider, :uid => auth.uid.to_s, :token => auth.credentials.token, :secret => auth.credentials.secret).first_or_initialize
+      # else
+        authorization = Authorization.where(:provider => auth.provider, :uid => auth.uid.to_s).first_or_initialize
+      # end
+
       p "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``"
       p authorization
       p "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``"
@@ -45,12 +54,20 @@ class User < ActiveRecord::Base
           #UserMailer.welcome_email()
         end
         authorization.user_id = user.id
+
+        #update the auth keys
+        authorization.token = auth.credentials.token
+        authorization.secret = auth.credentials.secret
+
         authorization.save!
       end
 
-      p ":::::::::::::::::::::::::::::::::::::::::::"      
+      p ":::::::::::::::::::::::::::::::::::::::::::"    
+      if auth.provider == "linkedin"  
        authorization.user.create_profile(authorization) if authorization.user.profile.blank?
-      
+      else
+        p "------->>>>>>>>>>>------------------>>>>>>>>>>>>>>>>>>>"
+      end
       authorization.user
     end    
 
@@ -120,7 +137,7 @@ class User < ActiveRecord::Base
       end
 
       def get_linked_client
-         client = LinkedIn::Client.new('759vgt28h7sdk4SH!V', '1777ATgXopRbrVZeR@J')
+         client = LinkedIn::Client.new(ENV['LINKEDIN_KEY'], ENV['LINKEDIN_SECRET'])
       end
 
 end
