@@ -38,3 +38,6 @@ gem 'linkedin'
 gem 'dotenv-rails'
 # gem 'omniauth-twitter'
 # gem 'omniauth-facebook'
+
+gem 'social-share-button', '~> 0.1.6'
+gem "social-buttons", '~> 0.3'
